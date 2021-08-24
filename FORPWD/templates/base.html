@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>PwDasma</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" >PwDasma</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/about">AboutUs</a></li>
+      <li><a href="/news">Announcements</a></li>
+     
+
+      {% if user.is_authenticated %}
+      
+      
+      <li style="margin-left: 970px; margin-top: 7px;">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Welcome, {{user.username}}
+          </button>
+          <div class="dropdown-menu" >
+            <center><a class="dropdown-item" href="/logout">Logout</a></center>
+
+      {% else %}
+            <a class="btn-primary" style=" padding: 4px; margin-left: 970px; margin-top: 10px;" href="/login">Login</a>
+      
+      {% endif %}
+
+      {% if request.user.is_superuser %}
+            <center><a class="dropdown-item" href="/applicants" >Admin</a></center>
+         </li>
+      {% else %}
+
+      {% endif %}
+            
+            
+          </div>
+        </div>
+        
+    </ul>
+  </div>
+</nav><br>
+
+        
+        {% block body %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

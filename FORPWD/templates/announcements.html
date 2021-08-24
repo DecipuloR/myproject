@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+            
+<div class="w3-container" style="width:50%;">
+  <h2>Birthday CashGifts</h2>
+  <p>Month of:</p>
+{% for post in post %}
+  <div class="w3-card-4" style="height:300px;">
+    <header class="w3-container w3-grey">
+      <h1 style="color: white;">Month</h1>
+    </header>
+
+    <div class="w3-container" style=" word-break: break-all;text-align: center; padding: 40px;">
+      <p>{{ post.PostAnnouncement }}</p>
+    </div>
+
+    
+  </div><br>
+{% endfor %}
+
+<div style="margin-left: 5%; width: 50%;">
+<label>Comments:</label><br>
+
+{% for msg in msg%}
+
+<p> {{ user.email }} {{ msg.date }}</p>
+<article style="word-break: break-all;">{{ msg.message }}</article><br>
+<hr>
+
+{% endfor %}
+</div><br><br><br>
+
+<!-- <div style="margin-left: 20px;" class="comments">
+<span>Leave your comment here.</span><br><br><br>
+
+<textarea name="commentInput"></textarea>
+
+
+
+</div>
+ -->
+
+<form method="POST" action="save" style="margin-left:5%;">
+{% csrf_token %}
+<div>
+<textarea name="message" id="message" style="font-family:sans-serif;font-size:1.2em; width: 40%;">
+</textarea><br>
+</div><br>
+<input type="submit" value="Enter">
+</form>
+
+
+<!-- <script>
+function myFunction(){
+		window.location.href="login.html";
+}
+
+var storedItem = localStorage.getItem("storedItem");
+
+
+function save(){
+	var Item = document.getElementById("input").value;
+	localStorage.setItem("storedItem", Item);
+	document.getElementById("savedText").innerHTML = Item;
+}
+
+function get(){
+	localStorage.getItem("storedItem");
+	document.getElementById("openedText").innerHTML = storedItem;
+}
+
+function clear(inputElement){
+	inputElement.classList.remove("savedText");
+}
+</script> -->
+{% endblock %}

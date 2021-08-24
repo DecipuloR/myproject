@@ -1,0 +1,76 @@
+{% extends 'base/index.html' %}
+{% block body %}
+
+<!-- <form class="add_your_class" method="GET" action="" >
+    <input class="add_your_class" type="search" name="search"> 
+    <button class="add_your_class" type="submit"> Search </button>
+</form>
+
+{% for result in all_search_results %}
+
+   
+
+{% empty %}
+
+   
+
+{% endfor %} -->
+
+<h1 style="margin-left: 50px;">Members</h1><br><br>
+
+
+<center><table style="width:95%;" class="table table">
+    <thead class="alert-warning">
+        <tr>
+            
+            <th>ID.no </th>
+            <th>Name</th>
+            <th>Disability</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>ContactNo.</th>
+            <th>Date of Birth</th>
+            <th>Cashgift</th>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+            
+            {% for applicant in applicant %}
+
+           	{% if applicant.status == 'Denied' or applicant.status == 'Pending' %} 
+
+           	{% else %}
+            <td>{{ applicant.Pwdnumber }}</td>
+            <td>{{ applicant.firstName }} {{ applicant.middleName }} {{ applicant.lastName }}</td>
+            <td>{{ applicant.disability }}</td>
+            <td>{{ applicant.Address }}</td>
+            <td>{{ applicant.Age }}</td>
+            <td>{{ applicant.Gender }}</td>
+            <td>{{ applicant.ContactNumber }}</td>
+            <td>{{ applicant.BirthDate }}</td> 
+            <td>{{ applicant.cash }}</td>
+		            {% if applicant.cash == 'Received' %}
+
+		            {% else %}
+					<td><a href="{% url 'received' applicant.id%}"><button class="btn btn-info">Check</button></a></td>
+					{% endif %}
+				
+
+				
+
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table></center>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<form method="POST" action="updatepost/ {{ postt.id }}">
+
+<div class="form-group">
+            <label for="PostAnnouncement">Update Post</label>
+            <input type="text" name="PostAnnouncement" value="{{ post.PostAnnouncement }}" class="form-control" required="required"/>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-edit"></span> Update</button>
+        </div>
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base/index.html' %}
+{% block body %}
+
+{% for applicant in applicant %}
+
+{% if applicant.status == 'Approved' or applicant.status == 'Denied' %}
+
+{% else %}
+<div class="container py-5">
+<b style="font-size: 20px;">Name:{{ applicant.firstName}} {{applicant.lastName}}</b><br><br>
+
+<form method="POST" action="update/{{ applicant.id }}" >
+	{% csrf_token %}
+
+<label for="statusresult">Application Status:</label>
+<select name="statusresult" class="form-control" style="width: 20%;">
+	<option>Approved</option>
+	<option>Denied</option>
+</select><br>
+<label>Pwd Number</label>
+<input style="width: 20%;" class="form-control" type="text" name="Pwdnumber"></input><br>
+
+<div class="form-group">
+    <button type="submit" class="btn btn-success"> Save</button>
+</div>
+</form><br>
+
+</div>
+{% endif %}
+
+
+{% endfor %}
+
+
+
+{% endblock %}

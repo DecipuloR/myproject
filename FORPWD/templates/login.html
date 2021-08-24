@@ -1,0 +1,28 @@
+{% extends 'base/head.html' %}
+{% block body %}      
+
+{% load crispy_forms_tags %}
+
+
+
+<h1 style=" width: 90%; margin-left: 5%; font-family: cursive; border-bottom: 6px solid; font-size: 80px; border-style: groove 1px; " class=" text-warning">PwDasma</h1><br>
+
+<!-- <center><h1 style=" font-size: 50px; border-radius: 2px 2px; padding:10px; border-style: inherit;" class=" text-warning">Welcome</h1> -->
+
+<!--Login--> 
+<h1 class=" text-warning" style=" margin-left: 180px; font-family: serif; font-size: 40px;">Login</h1><br>
+<div class="container py-5">
+  
+  <form method="POST" style="width:30%;">
+    {% csrf_token %}
+    {{ login_form|crispy }}
+    <button class="btn btn-primary" type="submit">Login</button>
+  </form>
+  <br>
+  <p class="">Don't have an account? <a href="/register">Create an account</a></p>
+</div>
+</center>
+
+
+
+{% endblock %}

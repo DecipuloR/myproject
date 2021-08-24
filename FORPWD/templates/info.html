@@ -1,0 +1,65 @@
+{% extends 'base/index.html' %}
+{% block body %}
+    <div class="col-md-3"></div>
+    <div class="col-md-6 well">
+    <h3 class="text-primary"></h3>
+    <form method="POST" action="updateinfo/{{ applicants.id }}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="firstName">FirstName*</label>
+            <input type="text" name="firstName" value="{{ applicants.firstName }}" class="form-control" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="lastName">LastName*</label>
+            <input type="text" name="lastName" value="{{ applicants.lastName }}" class="form-control" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="middleName">MiddleName*</label>
+            <input type="text" name="middleName" value="{{ applicants.middleName }}" class="form-control" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="disability">Disability*</label>
+            <select name="disability" class="form-control" value="{{ applicants.disability }}" required="required">
+                <option>Psychosocial Disability</option>
+                <option>Chronic Illness</option>
+                <option>Learning Disability</option>
+                <option>Mental Disability</option>
+                <option>Visual Disability</option>
+                <option>Orthopedic Disability</option>
+                <option>Communication Disability</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Address">Address*</label>
+            <input type="text" name="Address" value="{{ applicants.Address }}" class="form-control" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="Age">Age*</label>
+            <input type="text" name="Age" value="{{ applicants.Age }}" class="form-control" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="Gender">Gender*</label>
+            <select name="Gender" value="{{ applicants.Gender }}" class="form-control" required="required">
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+            
+        </div>
+        <div class="form-group">
+            <label for="ContactNumber">ContactNo.*</label>
+            <input type="text" name="ContactNumber" value="{{ applicants.ContactNumber }}" class="form-control" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="DateUpdated">Date of Birth*</label>
+            <input type="date" name="BirthDate" value="{{ applicants.BirthDate }}" class="form-control" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="DateUpdated">Date*</label>
+            <input type="date" name="DateUpdated" value="{{ applicants.DateUpdated }}" class="form-control" required="required"/>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-edit"></span> Update</button>
+        </div>
+    </form>
+{% endblock %}

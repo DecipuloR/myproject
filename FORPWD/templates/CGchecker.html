@@ -1,0 +1,33 @@
+{% extends 'base/index.html' %}
+{% block body %}
+
+{% for applicant in applicant %}
+
+{% if applicant.cash == 'Received' or applicant.Pwdnumber == 'Pending' or applicant.status == 'Denied' %}
+
+{% else %}
+<form method="POST" action="{% url 'giftupdate' applicant.id%}" style="margin-left: 20px;">
+	{% csrf_token %}
+	<div class="form-group">
+		<h2> Name: {{ applicant.firstName}} {{ applicant.lastName}}</h2>
+		<b>ID.No: {{ applicant.Pwdnumber }}</b><br>
+		<label for="cash"></label>
+		<select class="form-control" name="cash" style="width: 40%;">
+			<option> </option>
+			<option>Received</option>
+		</select>
+		<input type="submit" name="submitbtn" class="form-control" style="width: 40%" value="Confirm">
+	</div>
+</form>
+{% endif %}
+
+
+
+
+{% endfor %}
+
+
+
+
+
+{% endblock %}

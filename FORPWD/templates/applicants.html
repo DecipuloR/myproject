@@ -1,0 +1,58 @@
+{% extends 'base/index.html' %}
+{% block body %}
+
+
+
+<h1> Applicants: {{applicants.count}}</h1><br>
+
+<table class="table table-bordered">
+    <thead class="alert-warning">
+        <tr>
+            <th>Status</th>
+            <th>ID.no </th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>MiddleName</th>
+            <th>Disability</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>ContactNo.</th>
+            <th>Date of Birth</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+            
+            {% for applicant in applicants %}
+
+            <td>{{ applicant.status }}</td>
+            <td>{{ applicant.Pwdnumber }}</td>
+            <td>{{ applicant.firstName }}</td>
+            <td>{{ applicant.lastName }}</td>
+            <td>{{ applicant.middleName }}</td>
+            <td>{{ applicant.disability }}</td>
+            <td>{{ applicant.Address }}</td>
+            <td>{{ applicant.Age }}</td>
+            <td>{{ applicant.Gender }}</td>
+            <td>{{ applicant.ContactNumber }}</td>
+            <td>{{ applicant.BirthDate }}</td>
+            <td><center> 
+                {% if applicant.status == 'Pending' %}
+                <a href="{% url 'status' applicant.id%}"><button type="button" class="btn btn-info">View Status</button></a>&nbsp;&nbsp;
+                {% else %}
+
+                {% endif %}
+                <a class="btn btn-sm btn-warning" href="editinfo/{{ applicant.id }}"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a>&nbsp;&nbsp; 
+                <a class="btn btn-sm btn-danger" href="deleteinfo/{{ applicant.id }}"><span class="glyphicon glyphicon-trash"></span> Delete</a></center>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table><br><br>
+
+
+{% endblock %}
